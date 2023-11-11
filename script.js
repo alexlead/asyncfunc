@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
         displayUsers(await fetchUsers());
     })();
 
-
     // Additional options
 
     const popup = document.querySelector(".popup");
@@ -71,22 +70,14 @@ document.addEventListener("DOMContentLoaded", () => {
             
             `;
 
-
-
-
             popup.classList.add('active');
 
         }
-
-
-
 
     }
 
     closePopup.addEventListener('click', (e) => {
         popup.classList.remove('active');
     })
-
-
 
 })
