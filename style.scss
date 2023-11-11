@@ -1,0 +1,151 @@
+// colors
+
+$bg-dark: #379683;
+$bg-main: #5cdb85;
+$bg-light: #8ee4af;
+$text: #05386b;
+$text-light: #edf5f1;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+    padding: 5px;
+    background: $bg-dark;
+    color: $text;
+
+
+    #directory {
+        background:
+            radial-gradient(27% 29% at right, #0000 83%, #8ee4af 85% 99%, #0000 101%) calc(49px/2) 49px,
+            radial-gradient(27% 29% at left, #0000 83%, #8ee4af 85% 99%, #0000 101%) calc(49px/-2) 49px,
+            radial-gradient(29% 27% at top, #0000 83%, #8ee4af 85% 99%, #0000 101%) 0 calc(49px/2),
+            radial-gradient(29% 27% at bottom, #0000 83%, #8ee4af 85% 99%, #0000 101%) 0 calc(49px/-2) #5cdb85;
+        background-size: 98px 98px;
+        width: calc(100vW - 10px);
+        height: calc(100vH - 10px);
+        position: relative;
+        padding: 20px 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .column {
+            background-color: $bg-main;
+            height: 90vH;
+            overflow-y: auto;
+            width: 49%;
+            padding: 10px 20px;
+
+            &:first-child {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-right: 1px dashed $text-light;
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+
+                h1 {
+                    text-shadow: 3px 0px 3px $text-light, 0px 3px 3px $text-light, 3px 3px 3px $text-light, -3px 0px 3px $text-light, 0px -3px 3px $text-light, -3px -3px 3px $text-light;
+                    font-size: 40px;
+                    transition: 3s;
+
+                    &:hover {
+                        transform: rotateY(-360deg);
+                    }
+                }
+            }
+
+            &:nth-child(2) {
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+                position: relative;
+
+                li {
+                    cursor: pointer;
+                    font-size: 18px;
+                    margin: 5px 0;
+                    transition: 1s;
+
+                    &:hover {
+                        border: 1px dotted $text-light;
+                        font-size: 20px;
+                    }
+                }
+
+                .popup {
+
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    background: $bg-main;
+                    transition: 1s;
+                    width: 0;
+                    display: flex;
+                    overflow: hidden;
+
+                    &.active {
+                        width: 100%;
+
+                    }
+
+                    &__infowindow {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        padding: 20px 10px;
+
+                        &__header {
+                            min-width: 300px;
+                            padding: 20px 10px;
+
+                        }
+
+                        &__content {
+                            min-width: 300px;
+                            padding: 20px 10px;
+                            border-top: 1px double $text-light;
+                            border-bottom: 1px double $text-light;
+
+                            p {
+                                margin: 5px 0 0 0;
+                            }
+
+                        }
+
+
+                        &__footer {
+                            min-width: 300px;
+                            padding: 20px 10px;
+                            text-align: right;
+
+                            .button {
+                                background: $text-light;
+                                display: inline-block;
+                                padding: 5px 25px;
+                                border-radius: 20px;
+                                border: 3px double $text-light;
+                                color: $text;
+                                font-weight: bold;
+                                cursor: pointer;
+                                margin-right: 5px;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+
+
+
+        }
+
+    }
+
+}
