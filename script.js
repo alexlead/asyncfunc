@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
             li.innerHTML = user.name;
             li.setAttribute("data-userid", user.id);
             li.addEventListener('click', (e) => {
-                console.log(e.target)
                 showUserDetails(e.target.getAttribute("data-userid"));
             })
             usersList.appendChild(li);
@@ -35,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const popup = document.querySelector(".popup");
     const closePopup = document.querySelector(".popup .ok")
+    const playPopup = document.querySelector(".popup .play")
 
     const getCurrentUser = async (userId) => {
 
@@ -65,13 +65,14 @@ document.addEventListener("DOMContentLoaded", () => {
             <p>Suite: ${suite}</p>
             <p>City: ${city}</p>
             <p>Zip: ${zipcode}</p>
-            
             </div>
-            
             `;
-
+            playPopup.addEventListener('click', (e) => {
+                textToSpeech( content.textContent );
+            })
+        
             popup.classList.add('active');
-
+            
         }
 
     }
@@ -79,5 +80,15 @@ document.addEventListener("DOMContentLoaded", () => {
     closePopup.addEventListener('click', (e) => {
         popup.classList.remove('active');
     })
+
+
+    const textToSpeech = (text) => {
+        if ('speechSynthesis' in window) {
+            const synthesis = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance( text );
+            utterance.voice = synthesis.getVoices()[2];
+            synthesis.speak(utterance);
+        }
+    }
 
 })
