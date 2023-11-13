@@ -78,6 +78,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     closePopup.addEventListener('click', (e) => {
+        if ('speechSynthesis' in window) {
+            const synthesis = window.speechSynthesis;
+            synthesis.cancel();
+        }
         popup.classList.remove('active');
     })
 
@@ -86,7 +90,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if ('speechSynthesis' in window) {
             const synthesis = window.speechSynthesis;
             const utterance = new SpeechSynthesisUtterance( text );
-            utterance.voice = synthesis.getVoices()[2];
+            utterance.voice = synthesis.getVoices()[1];
+            utterance.lang = "en-US";
             synthesis.speak(utterance);
         }
     }
